@@ -8,7 +8,7 @@ class Main:
 
     mongo_db_connection = DatabaseConnection.create_database_connection("MongoDB")
 
-    mongo_db = mongo_db_connection.get_mongo_database()
+    mongo_db = mongo_db_connection.connect_to_mongo_database()
 
     mongo_db_collection = mongo_db["sample_course"]
 
