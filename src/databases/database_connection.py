@@ -1,5 +1,5 @@
-from src.databases.mongo_db import MongoDBConnection
-from src.databases.mysql_db import MySQLDBConnection
+from .mongo_db import MongoDBConnection
+from .mysql_db import MySQLDBConnection
 
 
 class DatabaseConnection:
