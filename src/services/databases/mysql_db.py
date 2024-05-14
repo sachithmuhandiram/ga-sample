@@ -1,0 +1,2 @@
+class MySQLDBConnection:
+    pass
