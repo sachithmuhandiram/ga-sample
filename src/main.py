@@ -1,4 +1,4 @@
-from databases.database_connection import DatabaseConnection
+from services.databases.database_connection import DatabaseConnection
 
 
 class Main:
