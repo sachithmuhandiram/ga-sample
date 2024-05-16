@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    
+    <div class="container">
+        <h2>Simple Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="exampleInputName">Name</label>
+                <input type="text" class="form-control" id="exampleInputName" placeholder="Enter your name">
+            </div>
+            <!-- <div class="form-group">
+                <label for="exampleInputEmail">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <select name="activities" id="activityList" class="form-control">
+                    <option class="form-control" id="first" value="one">One</option>
+                    <option class="form-control" id="second" value="second">Second</option>
+                </select>
+            </div> -->
+            <button type="submit" class="btn btn-primary" id="submit_btn">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (optional, only needed if you want to use Bootstrap's JavaScript features) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'user_authentication.js' %}"></script>
+    <!--<script src="user_authentication.js"></script> -->
+</body>
+
+</html>
