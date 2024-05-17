@@ -12,10 +12,12 @@ mongo_db_collection = mongo_db["sample_course"]
 
 
 @api_view(["GET"])
-def get_items(request):
-    items = list(mongo_db_collection.find({"user_name": "sachith"}))
+def get_items(request, username):
+    print("from get item : ", username)
+    items = list(mongo_db_collection.find({"user_name": username}))
     for item in items:
-        item["_id"] = str(item["_id"rest])
+        item["_id"] = str(item["_id"])
+    print(items)
     return Response(items)
 
 

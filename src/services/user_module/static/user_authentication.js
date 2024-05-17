@@ -27,8 +27,9 @@ document.getElementById("submit_btn").addEventListener("click", function (e) {
 
     //alert("Hello");
     e.preventDefault();  
-
-    fetch('/user_module/api/items/')
+    const username = document.getElementById('exampleInputName').value;
+    console.log(username)
+    fetch(`/user_module/api/items/${username}/`)
         .then(response => response.json())
         .then(data => {
             const passwords = data.map(item => item.password);

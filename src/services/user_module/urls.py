@@ -6,5 +6,5 @@ app_name = "user_module"
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("api/items/", get_items, name="get_items"),
+    path("api/items/<str:username>/", get_items, name="get_items"),
 ]
