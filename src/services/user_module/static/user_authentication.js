@@ -1,4 +1,4 @@
-import connectToMongoDB from './mongo_db.js';
+//import connectToMongoDB from './mongo_db.js';
 
 async function searchForARecord(user_name) {
     try {
@@ -28,10 +28,13 @@ document.getElementById("submit_btn").addEventListener("click", function (e) {
     //alert("Hello");
     e.preventDefault();  
 
-   let userName = document.getElementById("exampleInputName").value;
-
-    let password = searchForARecord(user_name);
-    console.log(password);
+    fetch('/user_module/api/items/')
+        .then(response => response.json())
+        .then(data => {
+            const passwords = data.map(item => item.password);
+            console.log(passwords[0])
+        })
+    .catch(error => console.error('Error:', error));
 
 });
 
