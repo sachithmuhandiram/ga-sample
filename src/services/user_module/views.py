@@ -14,11 +14,14 @@ mongo_db_collection = mongo_db["sample_course"]
 @api_view(["GET"])
 def get_items(request, username):
     print("from get item : ", username)
-    items = list(mongo_db_collection.find({"user_name": username}))
-    for item in items:
-        item["_id"] = str(item["_id"])
-    print(items)
-    return Response(items)
+    try:
+        items = list(mongo_db_collection.find({"user_name": username}))
+        for item in items:
+            item["_id"] = str(item["_id"])
+        print(items)
+        return Response(items)
+    except:
+        raise ConnectionError("There is a connection issue to Database")
 
 
 # Create your views here.

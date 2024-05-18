@@ -16,9 +16,12 @@ class MongoDBConnection:
 
     def connect_to_mongo_database(self):
         print(self.connection_url)
-        mongo_db_conn = MongoClient(self.connection_url)
-        mongo_db = mongo_db_conn[self.database]
-        return mongo_db
+        try:
+            mongo_db_conn = MongoClient(self.connection_url)
+            mongo_db = mongo_db_conn[self.database]
+            return mongo_db
+        except ConnectionError as err:
+            return err
 
     def insert_records(self, number_of_records):
         if number_of_records == "single":
