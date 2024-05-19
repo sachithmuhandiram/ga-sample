@@ -11,4 +11,5 @@ urlpatterns = [
         views.create_an_activity,
         name="create_an_activity",
     ),
+    path("save_an_activity", views.save_an_activity, name="save_an_activity"),
 ]

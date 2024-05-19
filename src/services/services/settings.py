@@ -87,7 +87,7 @@ DATABASES = {
     #     "HOST": "your_mysql_host",
     #     "PORT": "your_mysql_port",
     # },
-    "mongodb": {
+    "default": {
         "ENGINE": "djongo",
         "NAME": "sample_db",
         "ENFORCE_SCHEMA": False,

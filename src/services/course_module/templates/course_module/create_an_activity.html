@@ -12,7 +12,8 @@
   <body>
     <div class="container">
       <h1>Create Activity</h1>
-      <form>
+      <form action="{% url 'course_module:save_an_activity' %}" method="post">
+        {% csrf_token %} {{ save_an_activity }}
         <div class="form-group">
           <label for="text-input">Activity Name</label>
           <input
