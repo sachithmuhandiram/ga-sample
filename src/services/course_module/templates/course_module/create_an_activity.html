@@ -1,31 +1,45 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
     <title>Create an Activity</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>Create Activity</h1>
-        <form>
-            <div class="form-group">
-                <label for="text-input">Activity Name</label>
-                <input type="text" class="form-control" id="text-input" placeholder="Enter an Activity">
-            </div>
-            <div class="form-group">
-                <label for="radio-button">Has Groups</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="radio-button" id="has_groups" value="Has Groups">
-                    <label class="form-check-label" for="radio-button1">
-                        Option 1
-                    </label>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+      <h1>Create Activity</h1>
+      <form>
+        <div class="form-group">
+          <label for="text-input">Activity Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="new_activity"
+            name="new_activity"
+            placeholder="Enter an Activity"
+          />
+        </div>
+        <div class="form-group">
+          <label for="radio-button"></label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="has_groups"
+              id="has_groups"
+              value="Has Groups"
+            />
+            <label class="form-check-label" for="radio-button1">
+              Has Groups
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
-</body>
-</html></div>
+  </body>
+</html>

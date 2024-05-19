@@ -79,10 +79,23 @@ WSGI_APPLICATION = "services.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "your_mysql_database_name",
+    #     "USER": "your_mysql_user",
+    #     "PASSWORD": "your_mysql_password",
+    #     "HOST": "your_mysql_host",
+    #     "PORT": "your_mysql_port",
+    # },
+    "mongodb": {
+        "ENGINE": "djongo",
+        "NAME": "sample_db",
+        "ENFORCE_SCHEMA": False,
+        "CLIENT": {
+            "host": "localhost:27017",
+            # Other MongoDB connection options can be specified here if needed.
+        },
+    },
 }
 
 
