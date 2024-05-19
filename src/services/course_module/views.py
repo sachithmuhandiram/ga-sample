@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def create_an_activity(request):
+    return render(request, "course_module/create_an_activity.html")
