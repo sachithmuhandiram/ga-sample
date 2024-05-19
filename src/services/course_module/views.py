@@ -5,7 +5,7 @@ from django import forms
 
 
 class CreateNewActivity(forms.Form):
-    activity_name = forms.CharField(label="New Activity", max_length=100)
+    activity = forms.CharField(label="New Activity", max_length=100)
     has_groups = forms.BooleanField(label="Has Groups", required=False)
 
 
@@ -17,18 +17,12 @@ def save_an_activity(request):
     if request.method == "POST":
 
         # Get the new activity from the form
-        new_activity = CreateNewActivity(request.POST)
+        new_activity = request.POST.get("new_activity")
+        has_groups = request.POST.get("has_groups")
 
-        if new_activity.is_valid():
-            # Save the new activity to the database
-            activity = CourseActivity(
-                activity_name=new_activity.cleaned_data["activity_name"],
-                has_groups=new_activity.cleaned_data["has_groups"],
-            )
-            print(new_activity.cleaned_data["activity_name"])
-            activity.save()
-
-            # Redirect to a success page
+        # Save the new activity to the database
+        activity = CourseActivity(activity_name=new_activity, has_groups=has_groups)
+        # should be with pymongo
 
         return render(request, "course_module/create_an_activity.html")
     else:
