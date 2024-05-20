@@ -23,7 +23,7 @@ def save_an_activity(request):
     if request.method == "POST":
         mongo_db_collection = mongo_db["course_activities"]
         # Get the new activity from the form
-        new_activity = request.POST.get("activity")
+        new_activity = request.POST.get("new_activity")
         has_groups = request.POST.get("has_groups")
 
         # Create a python dictionary named course_data
