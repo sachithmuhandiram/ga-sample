@@ -19,12 +19,21 @@ def create_an_activity(request):
     return render(request, "course_module/create_an_activity.html")
 
 
+def define_a_course(request):
+    return render(request, "course_module/define_a_course.html")
+
+
 def save_an_activity(request):
     if request.method == "POST":
         mongo_db_collection = mongo_db["course_activities"]
         # Get the new activity from the form
         new_activity = request.POST.get("new_activity")
         has_groups = request.POST.get("has_groups")
+
+        if has_groups == "on":
+            has_groups = True
+        else:
+            has_groups = False
 
         # Create a python dictionary named course_data
         activity_data = {"activity_name": new_activity, "has_groups": has_groups}
