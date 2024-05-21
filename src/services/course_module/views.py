@@ -31,6 +31,25 @@ def define_a_course(request):
     )
 
 
+def save_course_meta_data(request):
+
+    if request.method == "POST":
+        course_code = request.POST.get("courseCode")
+        course_activities = request.POST.getlist("activities")
+
+        print("Course code : ", course_code)
+        print("Course has : ", course_activities)
+
+        mongo_course_meta_data = mongo_db["course_meta_data"]
+
+        course_meta_data = {
+            "course_code": course_code,
+            "course_activities": course_activities,
+        }
+        mongo_course_meta_data.insert_one(course_meta_data)
+        return define_a_course(request)
+
+
 def save_an_activity(request):
     if request.method == "POST":
 

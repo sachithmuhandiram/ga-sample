@@ -13,4 +13,9 @@ urlpatterns = [
     ),
     path("save_an_activity", views.save_an_activity, name="save_an_activity"),
     path("define_a_course", views.define_a_course, name="define_a_course"),
+    path(
+        "save_course_meta_data",
+        views.save_course_meta_data,
+        name="save_course_meta_data",
+    ),
 ]
