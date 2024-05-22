@@ -31,6 +31,18 @@ def define_a_course(request):
     )
 
 
+def define_course_activities_content(request):
+    # Get data from mongo db about the all course activities
+    course_activities = mongo_course_activity_collection.find({})
+    print("Course activities : ", course_activities)
+
+    return render(
+        request,
+        "course_module/define_course_activities_content.html",
+        {"course_activities": course_activities},
+    )
+
+
 def save_course_meta_data(request):
 
     if request.method == "POST":

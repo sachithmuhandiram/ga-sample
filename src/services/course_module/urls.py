@@ -18,4 +18,9 @@ urlpatterns = [
         views.save_course_meta_data,
         name="save_course_meta_data",
     ),
+    path(
+        "define_course_activities_content",
+        views.define_course_activities_content,
+        name="define_course_activities_content",
+    ),
 ]
