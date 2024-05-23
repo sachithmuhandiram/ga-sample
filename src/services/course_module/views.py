@@ -34,13 +34,13 @@ def define_a_course(request):
 
 def define_course_activities_content(request):
     # Get data from course_meta_data collcetion, first course code dynamically taken
-
+    course_meta_data = mongo_course_meta_data.find({})
     # Match course_activity with -> course_activity collections's activity_name
 
     return render(
         request,
         "course_module/define_course_activities_content.html",
-        {"course_activities": course_activities},
+        {"course_activities": course_meta_data},
     )
 
 

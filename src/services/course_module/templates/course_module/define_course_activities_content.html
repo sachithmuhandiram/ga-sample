@@ -3,13 +3,31 @@
   <head>
     <title>Course Activities</title>
   </head>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
   <body>
     {% csrf_token %}{{ save_course_activity_meta_data }}
-    <div id="content">
-      <!-- Content received from define_course_activities_content function will be displayed here 
-    * Course Code 
-    *   Activity -> Number of activites -> if has groups -> number of groups
-    *   Above should generated dynamically based on the data received from the function
-    --></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h1>Course Activities</h1>
+          <form id="define_course_activities">
+            <div class="form-group">
+              <label for="course_code">Select Course:</label>
+              <select id="course_code" name="course_code" class="form-control">
+                <option value="">Select Course</option>
+                {% for course in course_activities %}
+                <option value="{{ course.course_code }}">
+                  {{ course.course_code }}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
