@@ -47,11 +47,12 @@ def define_course_activities_content(request):
 
 
 @api_view(["GET"])
-def get_course_meta_data(request):
-    course_meta_data = mongo_course_meta_data.find({})
+def get_course_meta_data(request, course_code):
+    print("get course meta data called")
+    course_meta_data = mongo_course_meta_data.find({"course_code": course_code})
     # Convert the course_meta_data to a list of dictionaries
-    course_meta_data_list = [data for data in course_meta_data]
-    return Response(course_meta_data_list)
+
+    return Response(course_meta_data)
 
 
 def save_course_meta_data(request):
