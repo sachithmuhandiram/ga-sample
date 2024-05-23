@@ -9,6 +9,7 @@ mongo_db_connection = DatabaseConnection.create_database_connection("MongoDB")
 
 mongo_db = mongo_db_connection.connect_to_mongo_database()
 mongo_course_activity_collection = mongo_db["course_activities"]
+mongo_course_meta_data = mongo_db["course_meta_data"]
 
 
 class CreateNewActivity(forms.Form):
@@ -32,9 +33,9 @@ def define_a_course(request):
 
 
 def define_course_activities_content(request):
-    # Get data from mongo db about the all course activities
-    course_activities = mongo_course_activity_collection.find({})
-    print("Course activities : ", course_activities)
+    # Get data from course_meta_data collcetion, first course code dynamically taken
+
+    # Match course_activity with -> course_activity collections's activity_name
 
     return render(
         request,
