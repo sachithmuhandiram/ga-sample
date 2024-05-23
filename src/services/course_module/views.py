@@ -3,6 +3,8 @@ from django.shortcuts import render
 from .models import CourseActivity
 from django import forms
 from databases.database_connection import DatabaseConnection
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 import json
 
 mongo_db_connection = DatabaseConnection.create_database_connection("MongoDB")
@@ -42,6 +44,14 @@ def define_course_activities_content(request):
         "course_module/define_course_activities_content.html",
         {"course_activities": course_meta_data},
     )
+
+
+@api_view(["GET"])
+def get_course_meta_data(request):
+    course_meta_data = mongo_course_meta_data.find({})
+    # Convert the course_meta_data to a list of dictionaries
+    course_meta_data_list = [data for data in course_meta_data]
+    return Response(course_meta_data_list)
 
 
 def save_course_meta_data(request):

@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
-
-# from .views import get_items
+from .views import get_course_meta_data
 
 app_name = "course_module"
 
@@ -22,5 +21,10 @@ urlpatterns = [
         "define_course_activities_content",
         views.define_course_activities_content,
         name="define_course_activities_content",
+    ),
+    path(
+        "get_course_meta_data",
+        views.get_course_meta_data,
+        name="get_course_meta_data",
     ),
 ]
