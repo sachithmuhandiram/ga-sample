@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Course Activities</title>
+  </head>
+  <body>
+    {% csrf_token %}{{ save_course_activity_meta_data }}
+    <div id="content">
+      <!-- Content received from define_course_activities_content function will be displayed here 
+    * Course Code 
+    *   Activity -> Number of activites -> if has groups -> number of groups
+    *   Above should generated dynamically based on the data received from the function
+    --></div>
+  </body>
+</html>
