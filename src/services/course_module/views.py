@@ -6,6 +6,7 @@ from databases.database_connection import DatabaseConnection
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import json
+from bson import json_util
 
 mongo_db_connection = DatabaseConnection.create_database_connection("MongoDB")
 
@@ -46,12 +47,16 @@ def define_course_activities_content(request):
     )
 
 
-@api_view(["GET"])
-def get_course_meta_data(request, course_code):
-    print("get course meta data called")
-    course_meta_data = mongo_course_meta_data.find({"course_code": course_code})
-    # Convert the course_meta_data to a list of dictionaries
+@api_view(["POST"])
+def get_course_meta_data(request):
+    course_code = request.data
 
+    course_meta_data = mongo_course_meta_data.find({"course_code": course_code})
+
+    serialized_data = json.loads(json_util.dumps(course_meta_data))
+    course_activities = [data["course_activities"] for data in serialized_data]
+
+    print("Course activities : ", course_activities[0])
     return Response(course_meta_data)
 
 
