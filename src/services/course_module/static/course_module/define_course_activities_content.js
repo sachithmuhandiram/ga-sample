@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 return response.json();
             })
-            .then(data => {
-                console.log('Data received:', data);
-            })
+                .then(data => { // function call with data 
+                    createActivityElement(data);
+                })
             .catch(error => {
                 console.error('Fetch error:', error);
             });
@@ -47,3 +47,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Add your dynamic functionality here
     });
 });
+
+function createActivityElement(activity) {
+    // Create a new element
+    console.log("activity", activity)
+    var formDiv = document.createElement('div');
+    formDiv.classList.add("form-group");
+    const secondSelect = document.createElement('select');
+    secondSelect.classList.add("form-control");
+    secondSelect.id = "test";
+
+    var parent_form = document.getElementById("define_course_activities");
+    parent_form.appendChild(formDiv);
+}
