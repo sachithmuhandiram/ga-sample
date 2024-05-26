@@ -20,10 +20,25 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Example: Add event listener to form
     myForm.addEventListener('change', function(event) {
-        event.preventDefault();
+        //event.preventDefault();
         const newCourseCode = event.target.value;
         if (newCourseCode.length > 0) {
-            fetch('get_course_meta_data', {
+            const parentForm = document.getElementById("dynamic-obj");
+            // new form
+            if (parentForm === null) {
+                fetchACourse(newCourseCode);      
+            } else {
+                removeEarlierDynamic();
+                fetchACourse(newCourseCode);
+            }
+        } // selected a new course code
+                    // Add your dynamic functionality here
+    });
+});
+
+function fetchACourse(newCourseCode) {
+    
+    fetch('get_course_meta_data', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -43,20 +58,28 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => {
                 console.error('Fetch error:', error);
             });
-                    }
-                    // Add your dynamic functionality here
-    });
-});
+}
 
 function createActivityElement(activity) {
-    // Create a new element
-    console.log("activity", activity)
+   
     var formDiv = document.createElement('div');
     formDiv.classList.add("form-group");
+    formDiv.id = "dynamic-obj"
     const secondSelect = document.createElement('select');
     secondSelect.classList.add("form-control");
     secondSelect.id = "test";
+    formDiv.appendChild(secondSelect);
 
     var parent_form = document.getElementById("define_course_activities");
     parent_form.appendChild(formDiv);
+}
+
+function removeEarlierDynamic() {
+    const parentForm = document.getElementById("dynamic-obj");
+    if (parentForm.value !== "") {
+        console.log("here")
+
+            document.getElementById("dynamic-obj").remove();
+
+    }
 }

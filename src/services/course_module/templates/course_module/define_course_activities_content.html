@@ -19,7 +19,7 @@
             <div class="form-group">
               <label for="course_code">Select Course:</label>
               <select id="course_code" name="course_code" class="form-control">
-                <option value="">Select Course</option>
+                <option value="" id="select-option">Select Course</option>
                 {% for course in course_activities %}
                 <option value="{{ course.course_code }}">
                   {{ course.course_code }}
