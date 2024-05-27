@@ -71,10 +71,19 @@ function createActivityElement(activity) {
     formDiv.id = "dynamic-obj"
 
     console.log("activity: ", activity)
-    const secondSelect = document.createElement('select');
-    secondSelect.classList.add("form-control");
-    secondSelect.id = "test";
-    formDiv.appendChild(secondSelect);
+    for (activity_name in activity) {
+        var label = document.createElement('label');
+        label.for = activity[activity_name];
+        label.innerHTML = activity[activity_name];
+        formDiv.appendChild(label);
+
+        var input = document.createElement('input');
+        input.type = "text";
+        input.name = activity[activity_name];
+        input.classList.add("form-control");
+        input.value = "";
+        formDiv.appendChild(input);
+    }
 
     var parent_form = document.getElementById("define_course_activities");
     parent_form.appendChild(formDiv);
