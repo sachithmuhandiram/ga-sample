@@ -56,8 +56,8 @@ def get_course_meta_data(request):
     serialized_data = json.loads(json_util.dumps(course_meta_data))
     course_activities = [data["course_activities"] for data in serialized_data]
 
-    print("Course activities : ", course_activities[0])
-    return Response(course_meta_data)
+    print("Course activities : ", course_activities)
+    return Response(course_activities[0])
 
 
 def save_course_meta_data(request):

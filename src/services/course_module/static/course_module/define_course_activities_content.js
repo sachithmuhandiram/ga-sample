@@ -50,9 +50,11 @@ function fetchACourse(newCourseCode) {
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
                 }
+
                 return response.json();
             })
-                .then(data => { // function call with data 
+            .then(data => { // function call with data 
+                    console.log("data: ", data)
                     createActivityElement(data);
                 })
             .catch(error => {
@@ -61,10 +63,14 @@ function fetchACourse(newCourseCode) {
 }
 
 function createActivityElement(activity) {
-   
+   /*
+    Need to get data from db for groups. and then dynamically load text area for groups box
+   */
     var formDiv = document.createElement('div');
     formDiv.classList.add("form-group");
     formDiv.id = "dynamic-obj"
+
+    console.log("activity: ", activity)
     const secondSelect = document.createElement('select');
     secondSelect.classList.add("form-control");
     secondSelect.id = "test";
@@ -77,8 +83,6 @@ function createActivityElement(activity) {
 function removeEarlierDynamic() {
     const parentForm = document.getElementById("dynamic-obj");
     if (parentForm.value !== "") {
-        console.log("here")
-
             document.getElementById("dynamic-obj").remove();
 
     }
