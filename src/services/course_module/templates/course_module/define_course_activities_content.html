@@ -4,6 +4,23 @@
     <title>Course Activities</title>
     {% load static %}
     <script src="{% static 'course_module/define_course_activities_content.js' %}"></script>
+    <style>
+      .inline-label {
+        display: inline-block;
+        margin-right: 10px; /* Adjust as needed */
+        vertical-align: middle; /* Aligns the label with the middle of the input */
+      }
+
+      .inline-input {
+        display: inline-block;
+        vertical-align: middle; /* Aligns the input with the middle of the label */
+      }
+      .form-group {
+        display: flex;
+        align-items: center; /* Aligns items in the center vertically */
+        margin-bottom: 10px; /* Space between form groups */
+      }
+    </style>
   </head>
   <link
     rel="stylesheet"

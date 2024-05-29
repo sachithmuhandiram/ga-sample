@@ -72,17 +72,20 @@ function createActivityElement(activity) {
 
     console.log("activity: ", activity)
     for (activity_name in activity) {
+        
         var label = document.createElement('label');
         label.for = activity[activity_name];
         label.innerHTML = activity[activity_name];
+        label.classList.add("inline-label");        
         formDiv.appendChild(label);
-
+        
         var input = document.createElement('input');
         input.type = "text";
         input.name = activity[activity_name];
-        input.classList.add("form-control");
+        input.classList.add("form-control","inline-input");
         input.value = "";
         formDiv.appendChild(input);
+   
     }
 
     var parent_form = document.getElementById("define_course_activities");
