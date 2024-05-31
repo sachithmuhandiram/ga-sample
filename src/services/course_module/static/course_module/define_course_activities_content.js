@@ -85,6 +85,9 @@ function createActivityElement(activity) {
         input.classList.add("form-control","inline-input");
         input.value = "";
         formDiv.appendChild(input);
+
+        var br = document.createElement("br");
+        formDiv.appendChild(br);
    
     }
 
