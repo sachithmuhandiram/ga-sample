@@ -82,7 +82,7 @@ function createActivityElement(activity) {
         var input = document.createElement('input');
         input.type = "text";
         input.name = activity[activity_name];
-        input.classList.add("form-control","inline-input");
+        input.classList.add("form-control","inline-input","col-md-6");
         input.value = "";
         formDiv.appendChild(input);
 
