@@ -67,27 +67,33 @@ function createActivityElement(activity) {
     Need to get data from db for groups. and then dynamically load text area for groups box
    */
     var formDiv = document.createElement('div');
-    formDiv.classList.add("form-group");
+    formDiv.classList.add("form-group row");
     formDiv.id = "dynamic-obj"
 
     console.log("activity: ", activity)
     for (activity_name in activity) {
+
+        // check whether activity has groups
+        // python route to get groups
         
         var label = document.createElement('label');
         label.for = activity[activity_name];
         label.innerHTML = activity[activity_name];
-        label.classList.add("inline-label");        
+        label.classList.add("col-sm-2 col-form-label");        
         formDiv.appendChild(label);
         
+        var inputDiv = document.createElement('div');
+        inputDiv.classList.add("col-sm-4");
+
         var input = document.createElement('input');
         input.type = "text";
         input.name = activity[activity_name];
-        input.classList.add("form-control","inline-input");
+        input.classList.add("form-control");
         input.value = "";
-        formDiv.appendChild(input);
+        inputDiv.appendChild(input);
 
         var br = document.createElement("br");
-        formDiv.appendChild(br);
+        formDiv.appendChild(inputDiv);
    
     }
 
