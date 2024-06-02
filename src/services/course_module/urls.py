@@ -27,4 +27,9 @@ urlpatterns = [
         views.get_course_meta_data,
         name="get_course_meta_data",
     ),
+    path(
+        "get_course_activity_has_group",
+        views.get_course_activity_has_group,
+        name="get_course_activity_has_group",
+    ),
 ]

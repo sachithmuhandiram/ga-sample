@@ -62,24 +62,51 @@ function fetchACourse(newCourseCode) {
             });
 }
 
+function fetchGroups(activity) {
+    fetch('get_course_activity_has_group', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken // Include the CSRF token in the headers
+        },
+        body: JSON.stringify(activity)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Process the data received from the API
+        console.log("Groups data: ", data);
+        // Add your code to handle the groups data here
+    })
+    .catch(error => {
+        console.error('Fetch error:', error);
+    });
+}
+
 function createActivityElement(activity) {
    /*
     Need to get data from db for groups. and then dynamically load text area for groups box
    */
     var formDiv = document.createElement('div');
-    formDiv.classList.add("form-group row");
+    formDiv.classList.add("form-group");
     formDiv.id = "dynamic-obj"
 
     console.log("activity: ", activity)
     for (activity_name in activity) {
 
         // check whether activity has groups
+        var hasGroups = fetchGroups(activity[activity_name]);
+        console.log("hasGroups: ", hasGroups);
         // python route to get groups
         
         var label = document.createElement('label');
         label.for = activity[activity_name];
         label.innerHTML = activity[activity_name];
-        label.classList.add("col-sm-2 col-form-label");        
+        label.classList.add("col-form-label");        
         formDiv.appendChild(label);
         
         var inputDiv = document.createElement('div');

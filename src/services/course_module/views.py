@@ -60,6 +60,20 @@ def get_course_meta_data(request):
     return Response(course_activities[0])
 
 
+@api_view(["POST"])
+def get_course_activity_has_group(request):
+    activity = request.data
+
+    has_groups = mongo_course_activity_collection.find({"activity_name": activity})
+
+    print("Has groups : ", has_groups)
+    serialized_data = json.loads(json_util.dumps(has_groups))
+    has_groups = serialized_data[0].get("has_groups")
+
+    print(f" Activity {serialized_data[0]} Has groups : {has_groups}")
+    return Response(serialized_data)
+
+
 def save_course_meta_data(request):
 
     if request.method == "POST":
