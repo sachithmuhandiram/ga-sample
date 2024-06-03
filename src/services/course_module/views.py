@@ -71,7 +71,7 @@ def get_course_activity_has_group(request):
     has_groups = serialized_data[0].get("has_groups")
 
     print(f" Activity {serialized_data[0]} Has groups : {has_groups}")
-    return Response(serialized_data)
+    return Response(has_groups)
 
 
 def save_course_meta_data(request):
