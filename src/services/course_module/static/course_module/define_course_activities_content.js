@@ -80,7 +80,7 @@ function fetchGroups(activity) {
             return response.json();
         })
         .then(data => {
-            // Process the data received from the API
+            // Send this data to the function called it.
             console.log("Groups data: ", data);
             return data;
 
@@ -88,6 +88,12 @@ function fetchGroups(activity) {
         .catch(error => {
             console.error('Fetch error:', error);
         });
+}
+
+// async function to call fetchGroups
+async function fetchGroupsAsync(activity) {
+    const result = fetchGroups(activity);
+    return result;
 }
 
 function createActivityElement(activity) {
@@ -98,6 +104,9 @@ function createActivityElement(activity) {
     console.log("activity: ", activity);
 
     for (activity_name in activity) {
+
+        var has_group = fetchGroupsAsync(activity[activity_name]);
+        console.log("has_group: ", has_group);
         var label = document.createElement('label');
         label.htmlFor = activity[activity_name];
         label.innerHTML = activity[activity_name];
