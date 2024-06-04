@@ -91,30 +91,15 @@ function fetchGroups(activity) {
 }
 
 function createActivityElement(activity) {
-    /*
-     Need to get data from db for groups. and then dynamically load text area for groups box
-    */
     var formDiv = document.createElement('div');
     formDiv.classList.add("form-group");
-    formDiv.id = "dynamic-obj"
+    formDiv.id = "dynamic-obj";
 
-    console.log("activity: ", activity)
-    var hasGroups = false;
+    console.log("activity: ", activity);
+
     for (activity_name in activity) {
-
-        // check whether activity has groups
-        fetchGroups(activity[activity_name])
-            .then(hasGroups => {
-                console.log("data: ", hasGroups);
-            })
-            .catch(error => {
-                console.error('Error fetching groups:', error);
-            });
-        console.log("hasGroups: ", hasGroups, "activity_name: ", activity[activity_name]);
-        // python route to get groups
-
         var label = document.createElement('label');
-        label.for = activity[activity_name];
+        label.htmlFor = activity[activity_name];
         label.innerHTML = activity[activity_name];
         label.classList.add("col-form-label");
         formDiv.appendChild(label);
@@ -131,11 +116,10 @@ function createActivityElement(activity) {
 
         var br = document.createElement("br");
         formDiv.appendChild(inputDiv);
-
     }
 
-    var parent_form = document.getElementById("define_course_activities");
-    parent_form.appendChild(formDiv);
+    var parentForm = document.getElementById("define_course_activities");
+    parentForm.appendChild(formDiv);
 }
 
 function removeEarlierDynamic() {
