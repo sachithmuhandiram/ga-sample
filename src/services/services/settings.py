@@ -78,6 +78,14 @@ WSGI_APPLICATION = "services.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# MySQL database configuration
+# User : app_user
+# Password : myAppPass
+# Database : user_module
+# Host : 172.17.0.1
+# Port : 3306
+
+
 DATABASES = {
     # "default": {
     #     "ENGINE": "django.db.backends.mysql",
@@ -95,6 +103,12 @@ DATABASES = {
             "host": "localhost:27017",
             # Other MongoDB connection options can be specified here if needed.
         },
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "user_module",
+        "USER": "app_user",
+        "PASSWORD": "myAppPass",
+        "HOST": "172.17.0.1",
+        "PORT": "3306",
     },
 }
 
