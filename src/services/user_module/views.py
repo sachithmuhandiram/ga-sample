@@ -62,14 +62,13 @@ def register(request):
 @api_view(["POST"])
 def register_user(request):
     if request.method == "POST":
+        print(request.data)
         username = request.data["username"]
         password = request.data["password"]
         email = request.data["email"]
         first_name = request.data["first_name"]
         last_name = request.data["last_name"]
         mobile_number = request.data["mobile_number"]
-        role = request.data["role"]
-        course = request.data["course"]
         user = User()
         user.add_new_user(
             username,
@@ -78,7 +77,5 @@ def register_user(request):
             first_name,
             last_name,
             mobile_number,
-            role,
-            course,
         )
         return Response({"message": "User registered"})

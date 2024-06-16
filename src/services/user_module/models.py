@@ -29,8 +29,6 @@ class User(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     mobile_number = models.CharField(max_length=50)
-    role = models.CharField(max_length=50)
-    course = models.CharField(max_length=50)
 
     def __str__(self):
         return self.username
@@ -52,8 +50,6 @@ class User(models.Model):
         first_name,
         last_name,
         mobile_number,
-        role,
-        course,
     ):
         user = User(
             username=username,
@@ -62,8 +58,6 @@ class User(models.Model):
             first_name=first_name,
             last_name=last_name,
             mobile_number=mobile_number,
-            role=role,
-            course=course,
         )
         user.save()
 
@@ -81,8 +75,6 @@ class User(models.Model):
         first_name,
         last_name,
         mobile_number,
-        role,
-        course,
     ):
         user = User.objects.get(username=username)
         user.password = password
@@ -90,8 +82,6 @@ class User(models.Model):
         user.first_name = first_name
         user.last_name = last_name
         user.mobile_number = mobile_number
-        user.role = role
-        user.course = course
         user.save()
 
     # Create a function only administrator users can get all users details

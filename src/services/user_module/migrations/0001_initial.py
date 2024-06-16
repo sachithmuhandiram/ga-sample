@@ -27,8 +27,6 @@ class Migration(migrations.Migration):
                 ("first_name", models.CharField(max_length=50)),
                 ("last_name", models.CharField(max_length=50)),
                 ("mobile_number", models.CharField(max_length=50)),
-                ("role", models.CharField(max_length=50)),
-                ("course", models.CharField(max_length=50)),
             ],
         ),
     ]
