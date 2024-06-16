@@ -8,6 +8,8 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="static/css/style.css" />
+    {% load static %}
+    <script src="{% static 'user_module/user_authentication.js' %}"></script>
   </head>
   <body>
     <div class="container">
@@ -18,12 +20,14 @@
               <h3 class="panel-title">Please Sign In</h3>
             </div>
             <div class="panel-body">
-              <form role="form" action="/authenticate_user" method="post">
+              <form id="loginForm" onsubmit="authenticateUser(event)">
+                {% csrf_token %}
                 <fieldset>
                   <div class="form-group">
                     <input
                       class="form-control"
                       placeholder="Username"
+                      id="username"
                       name="username"
                       type="text"
                       autofocus
@@ -33,6 +37,7 @@
                     <input
                       class="form-control"
                       placeholder="Password"
+                      id="password"
                       name="password"
                       type="password"
                       value=""

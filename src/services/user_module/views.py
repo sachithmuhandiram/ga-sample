@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.shortcuts import render
+from django.http import JsonResponse
 from .models import User
 from django import forms
 from rest_framework.decorators import api_view
@@ -16,14 +16,21 @@ def login(request):
 # view for user authentication
 @api_view(["POST"])
 def authenticate_user(request):
+
     if request.method == "POST":
-        username = request.data["username"]
-        password = request.data["password"]
-        user = User.objects.get(username=username)
-        if user.authenticate_user(username, password):
-            return Response({"message": "User authenticated"})
-        else:
-            return Response({"message": "User not authenticated"})
+        try:
+            username = request.data["username"]
+            password = request.data["password"]
+            user = User.objects.get(username=username)
+            if user.authenticate_user(username, password):
+                return JsonResponse({"message": "User authenticated"}, status=200)
+            else:
+                return JsonResponse(
+                    {"message": "User not authenticated", "status": 401}
+                )
+        except User.DoesNotExist:
+            # JavaScript alert to username/password incorrect
+            return JsonResponse({"message": "User not authenticated", "status": 401})
 
 
 # view for user authorization
