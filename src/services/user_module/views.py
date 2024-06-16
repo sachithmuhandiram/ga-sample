@@ -23,14 +23,21 @@ def authenticate_user(request):
             password = request.data["password"]
             user = User.objects.get(username=username)
             if user.authenticate_user(username, password):
-                return JsonResponse({"message": "User authenticated"}, status=200)
+                return JsonResponse(
+                    {"message": "User  authenticated", "status": 200},
+                    content_type="application/json",
+                )
             else:
                 return JsonResponse(
-                    {"message": "User not authenticated", "status": 401}
+                    {"message": "User not authenticated", "status": 401},
+                    content_type="application/json",
                 )
         except User.DoesNotExist:
-            # JavaScript alert to username/password incorrect
-            return JsonResponse({"message": "User not authenticated", "status": 401})
+            # log to file regarding user module
+            return JsonResponse(
+                {"message": "User not authenticated", "status": 400},
+                content_type="application/json",
+            )
 
 
 # view for user authorization
