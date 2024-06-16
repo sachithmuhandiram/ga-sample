@@ -8,6 +8,17 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="static/css/style.css" />
+    <style>
+      #warning-banner {
+        display: none;
+        color: white;
+        background-color: red;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        text-align: center;
+      }
+    </style>
     {% load static %}
     <script src="{% static 'user_module/user_authentication.js' %}"></script>
   </head>
@@ -53,6 +64,7 @@
               </form>
             </div>
           </div>
+          <div id="warning-banner"></div>
           <div class="text-center">
             <a href="/register">Register</a> |
             <a href="/forgot_password">Forgot Password</a>

@@ -23,7 +23,8 @@ async function authenticateUser(event) {
         alert(data.message); // Authentication successful
         // Redirect to a new page or perform other actions
     } else if (response.status === 401) {
-        alert(data.message); // Authentication failed
+        warningBanner.style.display = 'block'; // Show the warning banner
+        warningBanner.textContent = data.message;
     }
     else {
         alert(data.message); // Authentication failed
