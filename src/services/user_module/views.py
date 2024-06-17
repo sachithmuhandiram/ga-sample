@@ -6,6 +6,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import json
 from bson import json_util
+from django.contrib.auth.hashers import make_password, check_password
 
 
 # View for login page
@@ -23,7 +24,7 @@ def authenticate_user(request):
             password = request.data["password"]
             user = User.objects.get(username=username)
 
-            if user.authenticate_user(username, password):
+            if check_password(password, user.password):
                 return JsonResponse({"message": "User authenticated"}, status=200)
             else:
                 return JsonResponse(
@@ -60,9 +61,9 @@ def register(request):
 @api_view(["POST"])
 def register_user(request):
     if request.method == "POST":
-        print(request.data)
+
         username = request.data["username"]
-        password = request.data["password"]
+        password = make_password(request.data["password"])
         email = request.data["email"]
         first_name = request.data["first_name"]
         last_name = request.data["last_name"]
