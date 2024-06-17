@@ -19,16 +19,15 @@ async function authenticateUser(event) {
         })
     });
 
-    const responseText = await response.json();
-    console.log(responseText);
+    // const responseText = await response.json();
+    // console.log(responseText);
 
     try {
-        const data = JSON.parse(responseText);
-        console.log(data);
         if (response.status === 200) {
             // Authentication successful
             // Redirect to a new page or perform other actions
             warningBanner.style.display = 'none'; // Hide the warning banner
+            console.log("User authenticated");
         } else if (response.status === 401) {
             // Authentication failed
             warningBanner.style.display = 'block'; // Show the warning banner
@@ -37,6 +36,6 @@ async function authenticateUser(event) {
     } catch (error) {
         console.error('Error parsing JSON:', error);
         warningBanner.style.display = 'block'; // Show the warning banner
-        warningBanner.textContent = 'Username / Password do not match. Please try again.';
+        warningBanner.textContent = 'Username / Password do not match. Please try again Error.';
     }
 }

@@ -22,21 +22,19 @@ def authenticate_user(request):
             username = request.data["username"]
             password = request.data["password"]
             user = User.objects.get(username=username)
+
             if user.authenticate_user(username, password):
-                return JsonResponse(
-                    {"message": "User  authenticated", "status": 200},
-                    content_type="application/json",
-                )
+                return JsonResponse({"message": "User authenticated"}, status=200)
             else:
                 return JsonResponse(
-                    {"message": "User not authenticated", "status": 401},
-                    content_type="application/json",
+                    {"message": "Username / Password do not match. Please try again."},
+                    status=401,
                 )
         except User.DoesNotExist:
             # log to file regarding user module
             return JsonResponse(
-                {"message": "User not authenticated", "status": 400},
-                content_type="application/json",
+                {"message": "Username / Password do not match. Please try again."},
+                status=401,
             )
 
 
