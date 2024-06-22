@@ -78,3 +78,7 @@ def register_user(request):
             mobile_number,
         )
         return Response({"message": "User registered"})
+
+
+def home(request):
+    return render(request, "user_module/home.html")
