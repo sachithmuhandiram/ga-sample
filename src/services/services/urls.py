@@ -22,7 +22,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("user_module/", include("user_module.urls")),
     path("ga_module/", include("ga_module.urls")),
     path("course_module/", include("course_module.urls")),
+    path(
+        "user_module/",
+        include(("user_module.urls", "user_module"), namespace="user_module"),
+    ),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

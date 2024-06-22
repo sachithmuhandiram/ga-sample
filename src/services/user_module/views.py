@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import User
 from django import forms
@@ -7,6 +7,7 @@ from rest_framework.response import Response
 import json
 from bson import json_util
 from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.decorators import login_required
 
 
 # View for login page
@@ -25,7 +26,8 @@ def authenticate_user(request):
             user = User.objects.get(username=username)
 
             if check_password(password, user.password):
-                return JsonResponse({"message": "User authenticated"}, status=200)
+                next_url = request.GET.get("next", "user_module:home")
+                return redirect(next_url)
             else:
                 return JsonResponse(
                     {"message": "Username / Password do not match. Please try again."},
@@ -80,5 +82,6 @@ def register_user(request):
         return Response({"message": "User registered"})
 
 
+@login_required
 def home(request):
     return render(request, "user_module/home.html")
