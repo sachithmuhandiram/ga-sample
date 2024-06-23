@@ -27,8 +27,8 @@ async function authenticateUser(event) {
             // Authentication successful
             // Redirect to a new page or perform other actions
             warningBanner.style.display = 'none'; // Hide the warning banner
-            console.log("User authenticated");
-            window.location.href = 'home';
+            console.log("User Response: ", response.json);
+            // window.location.href = 'home';
         } else if (response.status === 401) {
             // Authentication failed
             warningBanner.style.display = 'block'; // Show the warning banner

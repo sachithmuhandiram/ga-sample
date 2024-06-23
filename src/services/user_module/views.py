@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
+from django.contrib.auth import authenticate
+from django.http import HttpResponseRedirect, JsonResponse
 from .models import User
 from django import forms
 from rest_framework.decorators import api_view
@@ -23,16 +24,12 @@ def authenticate_user(request):
         try:
             username = request.data["username"]
             password = request.data["password"]
+            # next_url = request.GET.get("next", "user_module:login")
             user = User.objects.get(username=username)
-
+            print("User is: ", user)
             if check_password(password, user.password):
-                next_url = request.GET.get("next", "user_module:home")
-                return redirect(next_url)
-            else:
-                return JsonResponse(
-                    {"message": "Username / Password do not match. Please try again."},
-                    status=401,
-                )
+                return redirect("home/")
+            # JsonResponse({"redirect": next_url}, status=200)
         except User.DoesNotExist:
             # log to file regarding user module
             return JsonResponse(
@@ -82,6 +79,5 @@ def register_user(request):
         return Response({"message": "User registered"})
 
 
-@login_required
 def home(request):
     return render(request, "user_module/home.html")

@@ -24,8 +24,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("ga_module/", include("ga_module.urls")),
     path("course_module/", include("course_module.urls")),
-    path(
-        "user_module/",
-        include(("user_module.urls", "user_module"), namespace="user_module"),
-    ),
+    path("user_module/", include("user_module.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
